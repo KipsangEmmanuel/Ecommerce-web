@@ -119,6 +119,32 @@ header {
   font-size: 2.5rem
 }
 
+/* Styles for the modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  width: 70%;
+}
+
+.close {
+  float: right;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+
 .cart p {
   margin-top: 20px;
   font-weight: 500;
