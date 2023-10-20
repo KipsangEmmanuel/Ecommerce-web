@@ -2,10 +2,12 @@
 function displayProductDetails(product) {
     const productModal = document.getElementById('product-modal');
     const productTitle = document.getElementById('product-title');
+    const productImage = document.getElementById('product-image');
     const productDescription = document.getElementById('product-description');
     const productPrice = document.getElementById('product-price');
     
     productTitle.textContent = product.title;
+    productImage.src = product.image;
     productDescription.textContent = `Description: ${product.description}`;
     productPrice.textContent = `Price: $${product.price}`;
     
@@ -34,20 +36,18 @@ async function fetchAndDisplayProducts() {
         const products = await response.json();
 
         const shopImages = document.querySelector('.shop-images');
-        shopImages.innerHTML = ''; // Clear the existing content
+        shopImages.innerHTML = ''; 
 
         products.forEach(product => {
             const productCard = document.createElement('div');
             productCard.classList.add('shop-link');
             productCard.innerHTML = `
-                <h3>${product.title}</h3>
+                
                 <img src="${product.image}" alt="${product.title}">
                 <a href="#">Shop now</a>
             `;
             shopImages.appendChild(productCard);
         });
-
-        //click event listeners to product cards
         attachProductCardListeners(products);
     } catch (error) {
         console.error('Error fetching products:', error);

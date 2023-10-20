@@ -5,6 +5,8 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Open Sans", sans-serif;
+  /* background-color: blue; */
+  /* color: white; */
 }
 
 html {
@@ -71,11 +73,11 @@ header {
   border-bottom-left-radius: 4px;
   border: none;
 }
-.flex-search{
+/* .flex-search{
   display: flex;
   gap: 0px;
   margin-bottom: 10px;
-}
+} */
 .search-input {
   max-width: 600px;
   width: 100%;
@@ -119,7 +121,8 @@ header {
   font-size: 2.5rem
 }
 
-/* Styles for the modal */
+/*modal */
+
 .modal {
   display: none;
   position: fixed;
@@ -129,6 +132,7 @@ header {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
+  /* margin-bottom: 20px; */
 }
 
 .modal-content {
@@ -136,12 +140,41 @@ header {
   margin: 10% auto;
   padding: 20px;
   width: 70%;
+  display: flex;
 }
 
 .close {
   float: right;
   font-size: 30px;
   cursor: pointer;
+}
+
+#product-image {
+  max-width: 30%; 
+  margin-right: 20px;
+}
+
+#product-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+#product-description {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+#product-price {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.close {
+  float: left;
+  font-size: 50px;
+  cursor: pointer;
+  /* background-color: red; */
+  /* height: 60px; */
 }
 
 
