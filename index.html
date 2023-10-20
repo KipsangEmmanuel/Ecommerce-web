@@ -92,12 +92,22 @@
     <div id="product-modal" class="modal">
       <div class="modal-content">
           <span class="close">&times;</span>
-          <h2 id="product-title"></h2>
-          <img id="product-image" src="" alt="Product Image">
-          <p id="product-description"></p>
-          <p id="product-price"></p>
+          <div class="product-info">
+              <div class="product-details">
+                  <h2 id="product-title"></h2>
+                  <p id="product-description"></p>
+                  <p id="product-price"></p>
+              </div>
+              <img id="product-image" src="" alt="Product Image">
+          </div>
+          <div class="quantity-control">
+              <button id="decrement-quantity">-</button>
+              <input id="product-quantity" type="number" value="1" min="1">
+              <button id="increment-quantity">+</button>
+          </div>
       </div>
   </div>
+  
   
 
     

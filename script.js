@@ -5,6 +5,9 @@ function displayProductDetails(product) {
     const productImage = document.getElementById('product-image');
     const productDescription = document.getElementById('product-description');
     const productPrice = document.getElementById('product-price');
+    const quantityInput = document.getElementById('product-quantity');
+    const incrementButton = document.getElementById('increment-quantity');
+    const decrementButton = document.getElementById('decrement-quantity');
     
     productTitle.textContent = product.title;
     productImage.src = product.image;
@@ -26,6 +29,21 @@ function attachProductCardListeners(products) {
         productCard.addEventListener('click', () => {
             displayProductDetails(products[index]);
         });
+    });
+
+    let quantity = 1;
+    quantityInput.value = quantity;
+    
+    incrementButton.addEventListener('click', () => {
+        quantity++;
+        quantityInput.value = quantity;
+    });
+    
+    decrementButton.addEventListener('click', () => {
+        if (quantity > 1) {
+            quantity--;
+            quantityInput.value = quantity;
+        }
     });
 }
 
