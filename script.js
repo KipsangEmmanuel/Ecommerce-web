@@ -1,3 +1,53 @@
+const cart = [];
+let cartTotal = 0;
+
+//update cart display
+function updateCartDisplay() {
+    const cartItems = document.getElementById('cart-items');
+    const cartTotalDisplay = document.getElementById('cart-total')
+
+    //clear the existing cart disply
+    cartItems.innerHTML = '';
+    cart.forEach(item => {
+        const cartItem = document.createElement('li');
+        const product = item.product;
+        const quantity = item.quantity;
+
+        cartItem.innerHTML = `
+            <img src="${product.image}" alt="${product.title}"/>
+            <div>
+                <h3>${product.title}</h3>
+                <p>Description: ${product.description}</p>
+                <p>Price: $${product.price}</p>
+                <p>Quantity: ${quantity}</p>
+            </div>
+        `;
+
+        cartItems.appendChild(cartItem);
+    });
+
+    //cart total
+    cartTotalDisplay.textContent = `$${cartTotal.toFixed(2)}`;
+
+}
+
+function addToCart(product, quantity) {
+    const cartItem = {
+        product: product,
+        quantity: quantity
+    };
+
+    //calculate total cost of item
+    const itemTotal = product.price * quantity;
+    cartTotal += itemTotal;
+    cart.push(cartItem);
+
+    updateCartDisplay();
+
+
+
+}
+
 
 function displayProductDetails(product) {
     const productModal = document.getElementById('product-modal');
@@ -8,6 +58,7 @@ function displayProductDetails(product) {
     const quantityInput = document.getElementById('product-quantity');
     const incrementButton = document.getElementById('increment-quantity');
     const decrementButton = document.getElementById('decrement-quantity');
+    const addToCartButton = document.getElementById('add-to-cart');
     
     productTitle.textContent = product.title;
     productImage.src = product.image;
@@ -36,7 +87,46 @@ function displayProductDetails(product) {
             quantityInput.value = quantity;
         }
     });
+
+    //addToCart btn functionality
+    addToCartButton.addEventListener('click', () => {
+        addToCart(product, quantity);
+        productModal.style.display = 'none';
+    });
 }
+
+
+async function fetchAndDisplayProducts() {
+    try {
+        const response = await fetch('https://fakestoreapi.com/products');
+        const products = await response.json();
+
+        const shopImages = document.querySelector('.shop-images');
+        shopImages.innerHTML = ''; // Clear the existing content
+
+        products.forEach(product => {
+            const productCard = document.createElement('div');
+            productCard.classList.add('shop-link');
+            productCard.innerHTML = `
+                <h3>${product.title}</h3>
+                <img src="${product.image}" alt="${product.title}">
+                <a href="#">Shop now</a>
+            `;
+            productCard.addEventListener('click', () => {
+                displayProductDetails(product);
+            });
+            shopImages.appendChild(productCard);
+        });
+
+        // Attach click event listeners to product cards
+        attachProductCardListeners(products);
+    } catch (error) {
+        console.error('Error fetching products:', error);
+    }
+}
+
+// Call the function to fetch and display products
+fetchAndDisplayProducts();
 
 function attachProductCardListeners(products) {
     const productCards = document.querySelectorAll('.shop-link');

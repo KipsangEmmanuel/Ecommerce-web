@@ -183,6 +183,7 @@ header {
   width: 50px;
   text-align: center;
   margin: 0 10px;
+  border: none;
 }
 
 #decrement-quantity,
@@ -192,11 +193,14 @@ header {
     border: none;
     padding: 5px 10px;
     cursor: pointer;
+    border-radius: 5px;
 }
 
-#decrement-quantity:hover,
+#decrement-quantity:hover{
+  background-color: red;
+}
 #increment-quantity:hover {
-    background-color: #0056b3;
+    background-color: #61d765;
 }
 
 #product-price {
@@ -204,6 +208,20 @@ header {
   font-weight: bold;
   width: 100%;
 }
+
+/* test */
+#add-to-cart{
+  margin-left: 50px;
+  padding: 15px;
+  background-color: #f08c61;
+  border-radius: 25px;
+  border: none;
+  color: white;
+  font-size: 17px;
+  cursor: pointer;
+
+}
+/* test */
 
 .close {
   float: left;
@@ -336,6 +354,7 @@ header {
   font-weight: 600;
   height: 60px;
 }
+
 
 .footer-items {
   display: flex;
