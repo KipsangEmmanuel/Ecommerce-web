@@ -10,6 +10,7 @@ function updateCartDisplay() {
     cartItems.innerHTML = '';
     cart.forEach(item => {
         const cartItem = document.createElement('li');
+        cartItem.classList.add('cart-item')
         const product = item.product;
         const quantity = item.quantity;
 
@@ -47,7 +48,6 @@ function addToCart(product, quantity) {
 
 
 }
-
 
 function displayProductDetails(product) {
     const productModal = document.getElementById('product-modal');
