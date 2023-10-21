@@ -33,16 +33,22 @@ function updateCartDisplay() {
 }
 
 function addToCart(product, quantity) {
-    const cartItem = {
-        product: product,
-        quantity: quantity
-    };
+        // Check if the product is already in the cart
+        const existingCartItem = cart.find(item => item.product.id === product.id);
+
+        if(existingCartItem){
+            existingCartItem.quantity = quantity;
+        }else{
+            const cartItem = {
+                product: product,
+                quantity: quantity
+            };
+            cart.push(cartItem);
+        }
 
     //calculate total cost of item
     const itemTotal = product.price * quantity;
     cartTotal += itemTotal;
-    cart.push(cartItem);
-
     updateCartDisplay();
 
 
@@ -118,7 +124,6 @@ async function fetchAndDisplayProducts() {
             shopImages.appendChild(productCard);
         });
 
-        // Attach click event listeners to product cards
         attachProductCardListeners(products);
     } catch (error) {
         console.error('Error fetching products:', error);
