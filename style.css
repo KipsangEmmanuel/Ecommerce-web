@@ -221,22 +221,48 @@ header {
   cursor: pointer;
 
 }
-/* test */
-/* cart */
-/* Add these styles to your CSS file */
+.delete-button{
+  background-color: hsl(19, 100%, 50%);
+  color: white;
+  border-radius: 6px;
+  border: none;
+  padding: 10px;
+  font-size: 15px;
+  margin-top: 5px;
+  margin-left: 20px;
+  cursor: pointer;
+}
+#clear-cart-button{
+  background-color: hsl(19, 100%, 50%);
+  color: white;
+  border-radius: 6px;
+  border: none;
+  padding: 10px;
+  font-size: 15px;
+  margin-top: 5px;
+  margin-left: 20px;
+  cursor: pointer;
+}
 
 /* Style for cart items */
 #cart-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; 
   list-style: none;
   padding: 0;
+  /* border: none; */
 }
 
 .cart-item {
-  display: flex;
-  border: 1px solid #ddd;
-  margin: 10px;
+  width: calc(33.33% - 10px);
+  border: none;
+  border-radius: 3px;
+  margin: 10px 0;
   padding: 10px;
   background-color: #f9f9f9;
+  box-sizing: border-box; 
+
 }
 
 .cart-item img {
@@ -255,6 +281,7 @@ header {
   color: #777;
 }
 
+/* cart item end */
 #cart-total {
   font-size: 18px;
   font-weight: bold;

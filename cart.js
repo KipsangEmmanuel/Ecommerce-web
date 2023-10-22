@@ -1,31 +1,58 @@
-// document.addEventListener('DOMContentLoaded', function() {
-//     // Retrieve cart data from localStorage
-//     const cartData = JSON.parse(localStorage.getItem('cartData')) || [];
 
-//     // Reference the cart items container
-//     const cartItems = document.getElementById('cart-items');
 
-//     // Loop through the cart data and display products
-//     cartData.forEach(cartItem => {
-//         const product = cartItem.product;
-//         const quantity = cartItem.quantity;
 
-//         const cartItemElement = document.createElement('li');
-//         cartItemElement.innerHTML = `
-//             <h2>${product.title}</h2>
-//             <img src="${product.image}" alt="${product.title}">
-//             <p>Description: ${product.description}</p>
-//             <p>Price: $${product.price}</p>
-//             <p>Quantity: ${quantity}</p>
-//         `;
-//         cartItems.appendChild(cartItemElement);
-//     });
 
-//     // Calculate and display the cart total
-//     const cartTotalDisplay = document.getElementById('cart-total');
-//     const cartTotal = cartData.reduce((total, cartItem) => {
-//         return total + cartItem.product.price * cartItem.quantity;
-//     }, 0);
+function updateCartDisplay() {
+    const cartItems = document.getElementById('cart-items');
+    const cartTotalDisplay = document.getElementById('cart-total');
 
-//     cartTotalDisplay.textContent = `$${cartTotal.toFixed(2)}`;
-// });
+    // Clear the existing cart display
+    cartItems.innerHTML = '';
+    cart.forEach((item, index) => {
+        const cartItem = document.createElement('li');
+        const product = item.product;
+        const quantity = item.quantity;
+        cartItem.classList.add('cart-item'); // Add the cart-item class
+        cartItem.innerHTML = `
+            <img src="${product.image}" alt="${product.title}">
+            <div>
+                <h3>${product.title}</h3>
+                <p>Description: ${product.description}</p>
+                <p>Price: $${product.price}</p>
+                <p>Quantity: ${quantity}</p>
+            </div>
+            <button class="delete-button" data-index="${index}">Delete</button>
+        `;
+        cartItems.appendChild(cartItem);
+    });
+
+    // Cart total
+    cartTotalDisplay.textContent = `$${cartTotal.toFixed(2)}`;
+
+    // Attach click event listeners to the delete buttons
+    const deleteButtons = document.querySelectorAll('.delete-button');
+    deleteButtons.forEach(deleteButton => {
+        deleteButton.addEventListener('click', (event) => {
+            const index = event.target.getAttribute('data-index');
+            deleteCartItem(index);
+        });
+    });
+}
+
+// Function to delete a cart item by index
+function deleteCartItem(index) {
+    const item = cart[index];
+    const itemTotal = item.product.price * item.quantity;
+    cartTotal -= itemTotal;
+    cart.splice(index, 1);
+    updateCartDisplay();
+}
+
+
+
+
+
+
+
+
+
