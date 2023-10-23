@@ -28,8 +28,9 @@ function getProducts() {
                     productItem.innerHTML = `
                         <img src="${product.image}"/>
                         <h3>${product.title}</h3>
-                        <button onclick="displayProductDetails(${JSON.stringify(product)})">Show Details</button>
+                        
                     `;
+                    //<button onclick="displayProductDetails(${JSON.stringify(product)})">Show Details</button>
                     productList.appendChild(productItem);
                 });
             }

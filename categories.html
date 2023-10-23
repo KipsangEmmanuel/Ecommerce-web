@@ -4,9 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Category Selector</title>
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="category.css">
+    <!-- <script src="script.js"></script> -->
 </head>
 <body>
+    <header>
+        <nav class="navbar">
+          <div class="nav-logo">
+            <a href="#"><img src="images/amazon_logo.png" alt="logo"></a>
+          </div>
+          <div class="address">
+            <a href="#" class="deliver">Deliver</a>
+            <div class="map-icon">
+              <span class="material-symbols-outlined">location_on</span>
+              <a href="#" class="location">Nyeri Kenya</a>
+            </div>
+          </div>
+  
+          <!-- <div class="nav-search">
+            <a href="#pro"><h3>Our Products</h3></a> -->
+            <!-- <select class="select-search">
+              <option>Al</option>
+              <option>All Categories</option>
+              <option>Amazon Devices</option>
+            </select> -->
+            <!-- <input type="text" placeholder="Search Amazon" class="search-input">
+            <div class="search-icon">
+              <span class="material-symbols-outlined">search</span>
+            </div>
+          </div> -->
+  
+          <!-- <div class="sign-in">
+            <span><a href="#">LOGIN</a></span>
+            
+            <span>Account &amp; Lists</span></a>
+          </div> -->
+  
+          <!-- <div class="returns">
+            <span> &amp; </span></a>
+          </div>
+          <div class="cart">
+              <p>Enjoy <span>Your shopping</span></p>
+              
+          </div> -->
+        </nav>
+        
+        <div class="banner">
+          <div class="banner-content">
+            <div class="panel">
+              <a href="index.html"><span class="material-symbols-outlined">Back</span></a>
+            </div>
+    
+            <!-- <ul class="links">
+              <li><a href="#">Today's Deals</a></li>
+              <li><a href="#">Customer Service</a></li>
+              <li><a href="#">Registry</a></li>
+              <li><a href="#">Gift Cards</a></li>
+              <li><a href="#">Sell</a></li>
+            </ul> -->
+
+            <div class="cart">
+              <a href="#cart-section">
+                </a>
+                <p>Cart</p>
+            </div>
+          </div>
+        </div>
+    </header>
     <h1>Select a Category:</h1>
     <select id="category-selector">
         <option value="electronics">Electronics</option>
@@ -14,7 +79,7 @@
     </select>
     <button onclick="getProducts()">Get Products</button>
     <div id="product-list">
-        
+
     </div>
     <div id="product-details">
 
