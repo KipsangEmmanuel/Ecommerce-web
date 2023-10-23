@@ -26,8 +26,9 @@ function getProducts() {
                     const productItem = document.createElement('div');
                     productItem.classList.add('product-item');
                     productItem.innerHTML = `
-                        <img src="${product.image}"/>
+                        <img width="110px" src="${product.image}"/>
                         <h3>${product.title}</h3>
+                        <h3>${product.price}</h3>
                         
                     `;
                     //<button onclick="displayProductDetails(${JSON.stringify(product)})">Show Details</button>
