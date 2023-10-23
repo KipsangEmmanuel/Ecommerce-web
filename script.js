@@ -1,6 +1,8 @@
 const cart = [];
 let cartTotal = 0;
 
+
+
 //update cart display
 function updateCartDisplay() {
     const cartItems = document.getElementById('cart-items');
@@ -90,8 +92,6 @@ function addToCart(product, quantity) {
     cartTotal += itemTotal;
     updateCartDisplay();
 
-
-
 }
 
 function displayProductDetails(product) {
@@ -155,7 +155,6 @@ async function fetchAndDisplayProducts() {
             productCard.innerHTML = `
                 <h3>${product.title}</h3>
                 <img src="${product.image}" alt="${product.title}">
-                <a href="#">Shop now</a>
             `;
             productCard.addEventListener('click', () => {
                 displayProductDetails(product);
