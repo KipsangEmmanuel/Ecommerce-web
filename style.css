@@ -259,6 +259,14 @@ header {
   font-weight: bolder;
 }
 
+#cart-js{
+ background-color: orange;
+ padding: 7px;
+ width: 40px;
+ border-radius: 20px;
+ color: white;
+}
+
 /* Style for cart items */
 #cart-items {
   display: flex;

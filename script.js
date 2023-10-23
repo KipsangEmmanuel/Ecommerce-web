@@ -1,8 +1,6 @@
 const cart = [];
 let cartTotal = 0;
 
-
-
 //update cart display
 function updateCartDisplay() {
     const cartItems = document.getElementById('cart-items');
@@ -78,7 +76,7 @@ function addToCart(product, quantity) {
         const existingCartItem = cart.find(item => item.product.id === product.id);
 
         if(existingCartItem){
-            existingCartItem.quantity = quantity;
+            existingCartItem.quantity += quantity;
         }else{
             const cartItem = {
                 product: product,
@@ -140,37 +138,6 @@ function displayProductDetails(product) {
     });
 }
 
-
-async function fetchAndDisplayProducts() {
-    try {
-        const response = await fetch('https://fakestoreapi.com/products');
-        const products = await response.json();
-
-        const shopImages = document.querySelector('.shop-images');
-        shopImages.innerHTML = ''; // Clear the existing content
-
-        products.forEach(product => {
-            const productCard = document.createElement('div');
-            productCard.classList.add('shop-link');
-            productCard.innerHTML = `
-                <h3>${product.title}</h3>
-                <img src="${product.image}" alt="${product.title}">
-            `;
-            productCard.addEventListener('click', () => {
-                displayProductDetails(product);
-            });
-            shopImages.appendChild(productCard);
-        });
-
-        attachProductCardListeners(products);
-    } catch (error) {
-        console.error('Error fetching products:', error);
-    }
-}
-
-// Call the function to fetch and display products
-fetchAndDisplayProducts();
-
 function attachProductCardListeners(products) {
     const productCards = document.querySelectorAll('.shop-link');
     productCards.forEach((productCard, index) => {
@@ -180,7 +147,6 @@ function attachProductCardListeners(products) {
     });
 
 }
-
 
 async function fetchAndDisplayProducts() {
     try {
@@ -196,7 +162,9 @@ async function fetchAndDisplayProducts() {
             productCard.innerHTML = `
                 
                 <img src="${product.image}" alt="${product.title}">
-                <a href="#">Shop now</a>
+                
+                <span id="cart-js" class="material-symbols-outlined cart-icon">shopping_cart</span>
+                
             `;
             shopImages.appendChild(productCard);
         });
