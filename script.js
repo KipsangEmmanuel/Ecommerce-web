@@ -161,8 +161,8 @@ async function fetchAndDisplayProducts() {
             productCard.classList.add('shop-link');
             productCard.innerHTML = `
                 
-                <img src="${product.image}" alt="${product.title}">
                 
+                <img src="${product.image}" alt="${product.title}">       
                 <span id="cart-js" class="material-symbols-outlined cart-icon">shopping_cart</span>
                 
             `;
